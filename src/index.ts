@@ -1,6 +1,6 @@
 /// <reference types="levi-satori" />
 
-const s = globalThis.LeviSatori;
+const s = LeviSatori;
 
 export interface UserID {
   platform?: string;
@@ -13,16 +13,18 @@ export function toUserID(str: string): UserID {
   return { platform: platform ?? undefined, id: id.join(':') };
 }
 
-declare namespace LeviSatori {
-  interface Context {
-    su: Su;
+declare global {
+  namespace LeviSatori {
+    interface Context {
+      su: Su;
+    }
   }
 }
 
 export class Su extends s.Service {
   constructor(
     ctx: LeviSatori.Context,
-    public config: Su.Config,
+    public config: Su.Config
   ) {
     super(ctx as any, 'su', true);
   }
@@ -45,7 +47,7 @@ export const userIDSchema = s.Schema.object({
 export const userIDListSchema = s.Schema.union([
   s.Schema.array(userIDSchema),
   s.Schema.transform(s.Schema.array(s.Schema.string()), (arr) =>
-    arr.map(toUserID),
+    arr.map(toUserID)
   ),
 ]);
 
@@ -54,10 +56,9 @@ export namespace Su {
     superusers: UserID[];
   }
 
-  export const Config: globalThis.LeviSatori.Schema<Su.Config> =
-    s.Schema.object({
-      superusers: userIDListSchema,
-    });
+  export const Config: LeviSatori.Schema<Su.Config> = s.Schema.object({
+    superusers: userIDListSchema,
+  });
 }
 
 export default Su;

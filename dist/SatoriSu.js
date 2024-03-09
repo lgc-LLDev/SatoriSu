@@ -27,7 +27,7 @@ __export(src_exports, {
   userIDSchema: () => userIDSchema
 });
 module.exports = __toCommonJS(src_exports);
-var s = globalThis.LeviSatori;
+var s = LeviSatori;
 function toUserID(str) {
   if (!str.includes(":"))
     return { platform: void 0, id: str };
