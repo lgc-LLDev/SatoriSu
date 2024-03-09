@@ -1,23 +1,22 @@
 {
-  "name": "levi-logiri",
+  "name": "satori-su",
   "version": "0.1.0",
-  "main": "dist/LeviLogiri.js",
+  "main": "dist/SatoriSu.js",
+  "types": "dist/SatoriSu.d.ts",
   "packageManager": "yarn@4.1.0",
   "author": "student_2333 <lgc2333@126.com> (https://lgc2333.top)",
   "license": "MIT",
-  "repository": "github:lgc-LLDev/LeviSatori",
+  "repository": "github:lgc-LLDev/SatoriSu",
   "funding": "https://afdian.net/a/lgc2333",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --outfile=dist/LeviLogiri.js --target=es2020 --format=cjs",
+    "build": "esbuild src/index.ts --bundle --outfile=dist/SatoriSu.js --target=es2020 --format=cjs && dtsc && node scripts/after-build.js",
     "clean": "rimraf ./dist"
   },
   "devDependencies": {
+    "dtsc": "^3.0.4",
     "esbuild": "^0.18.20",
     "levi-satori": "workspace:^",
     "rimraf": "^5.0.5",
     "typescript": "^5.3.2"
-  },
-  "dependencies": {
-    "ansi-styles": "^6.2.1"
   }
 }
