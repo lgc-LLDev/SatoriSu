@@ -57,7 +57,7 @@ export namespace Su {
   }
 
   export const Config: LeviSatori.Schema<Su.Config> = s.Schema.object({
-    superusers: userIDListSchema,
+    superusers: userIDListSchema.default([]),
   });
 }
 

@@ -61,7 +61,7 @@ var userIDListSchema = s.Schema.union([
 ]);
 ((Su2) => {
   Su2.Config = s.Schema.object({
-    superusers: userIDListSchema
+    superusers: userIDListSchema.default([])
   });
 })(Su || (Su = {}));
 var src_default = Su;
